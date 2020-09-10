@@ -385,168 +385,142 @@ DO UNTIL EOF(1)
     LINE INPUT #1, lnumber
     lnumber2$ = lnumber
     FOR i = 1 TO LEN(lnumber)
-        b = MID$(lnumber, i, 1) ' Calculates the ascii value of every character in the line
+        FOR www = 1 TO 40000: NEXT www
+        d$ = MID$(lnumber, i, 1) ' Calculates the ascii value of every character in the line
         IF colordisplay = "L" THEN ' If color dzisplay is by line do the next lines of code
             IF display = "ansi" THEN
                 GOSUB specialcharacters3
-                GOSUB colorchange
+
                 IF flag$ = "Y1" THEN
+                    GOSUB colorchange
                     GOSUB displ
-                    PRINT #2, backgroundcoloransi + foregroundcoloransi + b;
-                    PRINT b;
+                    GOSUB specialcharacters2
+                    PRINT #2, backgroundcoloransi + foregroundcoloransi + d$;
+                    PRINT d$;
                 ELSEIF flag$ = "Y2" THEN
+                    GOSUB colorchange
                     GOSUB displ
-                    PRINT #2, backgroundcoloransi + foregroundcoloransi + b;
-                    PRINT b;
+                    GOSUB specialcharacters2
+                    PRINT #2, backgroundcoloransi + foregroundcoloransi + d$;
+                    PRINT d$;
                 ELSEIF flag$ = "Y3" THEN
+                    GOSUB colorchange
                     GOSUB displ
-                    PRINT #2, backgroundcoloransi + foregroundcoloransi + b;
-                    PRINT b;
-                ELSE
-                    PRINT #2, b
-                    PRINT b;
+                    GOSUB specialcharacters2
+                    PRINT #2, backgroundcoloransi + foregroundcoloransi + d$;
+                    PRINT d$;
                 END IF
+            ELSE
+                PRINT #2, d$
             END IF
         END IF
 
 
         IF display = "wc8" THEN
             GOSUB specialcharacters3
+
             IF flag$ = "Y1" THEN
-                GOSUB displ
                 GOSUB colorchange
-                PRINT #2, backgroundcolorbbs + foregroundcolorbbs + c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolorbbs + foregroundcolorbbs + d$;
+                PRINT d$;
             ELSEIF flag$ = "Y2" THEN
-                GOSUB displ
                 GOSUB colorchange
-                PRINT #2, backgroundcolorbbs + foregroundcolorbbs + c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolorbbs + foregroundcolorbbs + d$;
+                PRINT d$;
             ELSEIF flag$ = "Y3" THEN
-                GOSUB displ
                 GOSUB colorchange
-                PRINT #2, backgroundcolorbbs + foregroundcolorbbs + c$;
-                PRINT c$;
-            ELSE
-                c$ = b
-                PRINT #2, c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolorbbs + foregroundcolorbbs + d$;
+                PRINT d$;
             END IF
+        ELSE
+            PRINT #2, d$
         END IF
 
 
-        IF display = "pcb" THEN
-            IF flag$ = "" THEN
-                PRINT #2, b;
-                PRINT b;
-            ELSEIF flag$ = "Y1" THEN
-                GOSUB pick1
-                x = g
-                y = t
-                GOSUB colorchange
-                GOSUB displ
-                PRINT #2, backgroundcoloransi + foregroundcoloransi + c$;
-                PRINT c$;
-            ELSEIF flag$ = "Y2" THEN
-                GOSUB pick2
-                x = g1
-                y = t1
-                GOSUB colorchange
-                GOSUB displ
-                PRINT #2, backgroundcoloransi + foregroundcoloransi + c$;
-                PRINT c$;
-            ELSEIF flag$ = "Y3" THEN
-                GOSUB pick3
-                x = g2
-                y = t2
-                GOSUB colorchange
-                GOSUB displ
-                PRINT #2, backgroundcoloransi + foregroundcoloransi + c$;
-                PRINT c$;
-            ELSE
-                PRINT #2, c$;
-                PRINT c$;
-            END IF
-        END IF
         IF display = "pcb" THEN
             GOSUB specialcharacters3
+
             IF flag$ = "Y1" THEN
-                GOSUB displ
                 GOSUB colorchange
-
-                PRINT #2, backgroundcolorpcb + foregroundcolorpcb + c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolorpcb + foregroundcolorpcb + d$;
+                PRINT d$;
             ELSEIF flag$ = "Y2" THEN
-                GOSUB displ
                 GOSUB colorchange
-
-                PRINT #2, backgroundcolorpcb + foregroundcolorbbs + c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolorpcb + foregroundcolorpcb + d$;
+                PRINT d$;
             ELSEIF flag$ = "Y3" THEN
-                GOSUB displ
                 GOSUB colorchange
-
-                PRINT #2, backgroundcolorpcb + foregroundcolorpcb + c$;
-                PRINT c$;
-            ELSE
-                c$ = b
-                PRINT #2, c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolorpcb + foregroundcolorpcb + d$;
+                PRINT d$;
             END IF
+        ELSE
+            PRINT #2, d$
         END IF
+
         IF display = "syn" THEN
             GOSUB specialcharacters3
             IF flag$ = "Y1" THEN
-                GOSUB displ
                 GOSUB colorchange
-
-                PRINT #2, backgroundcolorsyncro + foregroundcolorsyncro + c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolorsyncro + foregroundcolorsyncro + d$;
+                PRINT d$;
             ELSEIF flag$ = "Y2" THEN
-                GOSUB displ
                 GOSUB colorchange
-
-                PRINT #2, backgroundcolorsyncro + foregroundcolorsyncro + c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolorsyncro + foregroundcolorsyncro + d$;
+                PRINT d$;
             ELSEIF flag$ = "Y3" THEN
-                GOSUB displ
                 GOSUB colorchange
-
-                PRINT #2, backgroundcolorsyncro + foregroundcolorsyncro + c$;
-                PRINT c$;
-            ELSE
-                c$ = b
-                PRINT #2, c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolorsyncro + foregroundcolorsyncro + d$;
+                PRINT d$;
             END IF
+        ELSE
+            PRINT #2, d$
         END IF
+
 
         IF display = "mys" THEN
             GOSUB specialcharacters3
+
             IF flag$ = "Y1" THEN
-                GOSUB displ
                 GOSUB colorchange
-
-                PRINT #2, backgroundcolormystic + foregroundcolormystic + c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolormystic + foregroundcolormystic + d$;
+                PRINT d$;
             ELSEIF flag$ = "Y2" THEN
-                GOSUB displ
                 GOSUB colorchange
-
-                PRINT #2, backgroundcolormystic + foregroundcolormystic + c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolormystic + foregroundcolormystic + d$;
+                PRINT d$;
             ELSEIF flag$ = "Y3" THEN
-                GOSUB displ
                 GOSUB colorchange
-
-                PRINT #2, backgroundcolormystic + foregroundcolormystic + c$;
-                PRINT c$;
-            ELSE
-                c$ = b
-                PRINT #2, c$;
-                PRINT c$;
+                GOSUB displ
+                GOSUB specialcharacters2
+                PRINT #2, backgroundcolormystic + foregroundcolormystic + d$;
+                PRINT d$;
             END IF
+        ELSE
+            PRINT #2, d$
         END IF
+
         IF colordisplay = "W" THEN ' If color dzisplay is by line do the next lines of code
             IF display = "ansi" THEN
                 GOSUB specialcharacters3
@@ -1046,36 +1020,36 @@ IF display = "mys" THEN
 END IF
 RETURN
 specialcharacters2:
-IF b = CHR$(94) THEN b = corner1
-IF b = CHR$(43) THEN b = corner2
-IF b = CHR$(37) THEN b = corner3
-IF b = CHR$(126) THEN b = corner4
-IF b = CHR$(45) THEN
-    b = lineconnector
+IF d$ = CHR$(94) THEN c$ = corner1
+IF d$ = CHR$(43) THEN c$ = corner2
+IF d$ = CHR$(37) THEN c$ = corner3
+IF d$ = CHR$(126) THEN c$ = corner4
+IF d$ = CHR$(45) THEN
+    c$ = lineconnector
 END IF
-IF b = CHR$(38) THEN
-    b = connector1
+IF d$ = CHR$(38) THEN
+    c$ = connector1
 END IF
 
-IF b = CHR$(61) THEN
-    b = connector2
+IF d$ = CHR$(61) THEN
+    c$ = connector2
 END IF
-IF b = CHR$(35) THEN
-    b = connector3
+IF d$ = CHR$(35) THEN
+    c$ = connector3
 END IF
-IF b = CHR$(42) THEN
-    b = connector4
+IF d$ = CHR$(42) THEN
+    c$ = connector4
 END IF
-IF b = CHR$(33) THEN
-    b = verticalline
+IF d$ = CHR$(33) THEN
+    c$ = verticalline
 END IF
 RETURN
 specialcharacters3:
-IF b = CHR$(94) OR b = CHR$(43) OR b = CHR$(37) OR b = CHR$(126) OR b = CHR$(45) OR b = CHR$(38) OR b = CHR$(35) OR b = CHR$(42) OR b = CHR$(33) OR b = CHR$(61) THEN
+IF d$ = CHR$(94) OR d$ = CHR$(43) OR d$ = CHR$(37) OR d$ = CHR$(126) OR d$ = CHR$(45) OR d$ = CHR$(38) OR d$ = CHR$(35) OR d$ = CHR$(42) OR d$ = CHR$(33) OR d$ = CHR$(61) THEN
     flag$ = "Y1"
-ELSEIF b = CHR$(91) THEN
+ELSEIF d$ = CHR$(91) THEN
     flag$ = "Y2"
-ELSEIF b = CHR$(93) THEN
+ELSEIF d$ = CHR$(93) THEN
     flag$ = "Y2"
 ELSE
     flag$ = "Y3"
@@ -1090,7 +1064,6 @@ IF flag$ = "Y1" THEN
     y = t1
     c = x
     d = y
-
 ELSEIF flag$ = "Y2" THEN
     g2 = 4
     GOSUB pick3
@@ -1098,17 +1071,12 @@ ELSEIF flag$ = "Y2" THEN
     x = g2
     y = t2
 ELSEIF flag$ = "Y3" THEN
-    g3 = 1
+    g = 3
     GOSUB pick1
-    COLOR t3, g3
-    x = g3
-    y = t3
-ELSE
-    x = x
-    y = y
-    COLOR y, x
+    COLOR t, g
+    x = g
+    y = t
 END IF
-
 RETURN
 
 filenotfound:
@@ -1151,19 +1119,10 @@ IF g2 = 5 THEN t2 = 2
 IF g2 = 6 THEN t2 = 1
 IF g2 = 7 THEN t2 = 0
 RETURN
-
-pick4:
-IF g3 = 0 THEN t3 = 7
-IF g3 = 1 THEN t3 = 6
-IF g3 = 2 THEN t3 = 5
-IF g3 = 3 THEN t3 = 4
-IF g3 = 4 THEN t3 = 3
-IF g3 = 5 THEN t3 = 2
-IF g3 = 6 THEN t3 = 1
-IF g3 = 7 THEN t3 = 0
+buildit:
+d$ = c$
+MID$(lnumber2$, i, 1) = d$
 RETURN
-
-
 
 
 
